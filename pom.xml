@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis-parent</artifactId>
-    <version>32-SNAPSHOT</version>
+    <version>32</version>
   </parent>
 
   <artifactId>mybatis</artifactId>
@@ -137,23 +137,33 @@
     <dependency>
       <groupId>ognl</groupId>
       <artifactId>ognl</artifactId>
-      <version>3.0.8</version>
-      <scope>provided</scope>
-      <optional>true</optional>
-      <exclusions>
-         <exclusion>
-            <groupId>javassist</groupId>
-            <artifactId>javassist</artifactId>
-         </exclusion>
-      </exclusions>
+      <version>3.2.10</version>
     </dependency>
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
-      <version>3.18.2-GA</version>
-      <scope>provided</scope>
-      <optional>true</optional>
+      <version>3.24.1-GA</version>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>ognl</groupId>-->
+<!--      <artifactId>ognl</artifactId>-->
+<!--      <version>3.0.8</version>-->
+<!--      <scope>provided</scope>-->
+<!--      <optional>true</optional>-->
+<!--      <exclusions>-->
+<!--         <exclusion>-->
+<!--            <groupId>javassist</groupId>-->
+<!--            <artifactId>javassist</artifactId>-->
+<!--         </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.javassist</groupId>-->
+<!--      <artifactId>javassist</artifactId>-->
+<!--      <version>3.18.2-GA</version>-->
+<!--      <scope>provided</scope>-->
+<!--      <optional>true</optional>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -241,6 +251,13 @@
       <version>9.1-901-1.jdbc4</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.28</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -332,6 +349,7 @@
               <exclude>org/apache/ibatis/javassist/**/*.class</exclude>
             </excludes>
           </instrumentation>
+          <check/>
         </configuration>
         <executions>
           <execution>
@@ -341,6 +359,14 @@
           </execution>
         </executions>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>6</source>
+                <target>6</target>
+            </configuration>
+        </plugin>
     </plugins>
 
     <resources>
